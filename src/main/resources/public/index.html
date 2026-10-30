@@ -1,0 +1,490 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CoopTrack cooperative task and contribution management system"
+    />
+    <title>CoopTrack | Cooperative Management</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="app-layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">C</div>
+          <div>
+            <h2>CoopTrack</h2>
+            <small>Farmers' Cooperative</small>
+          </div>
+        </div>
+
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="#dashboard" class="nav-link active">Dashboard</a>
+          <a href="#members" class="nav-link">Members</a>
+          <a href="#tasks" class="nav-link">Tasks & Work Days</a>
+          <a href="#contributions" class="nav-link">Contributions</a>
+          <a href="#support" class="nav-link">Member Support</a>
+          <a href="#invitations" class="nav-link">Invitation Keys</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <span class="status-dot"></span>
+          Cooperative workspace
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">COOPERATIVE MANAGEMENT</p>
+            <h1 id="page-title">Dashboard</h1>
+          </div>
+          <div class="user-badge">
+            <span class="avatar">A</span>
+            <div>
+              <strong>Administrator</strong>
+              <small>Admin workspace</small>
+            </div>
+          </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page-section">
+          <div class="welcome-panel">
+            <div>
+              <p class="eyebrow">WELCOME TO COOPTRACK</p>
+              <h2>Working together, growing together.</h2>
+              <p>
+                Coordinate cooperative work, track contributions and keep member
+                support records in one place.
+              </p>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span class="stat-label">Total Members</span>
+              <strong id="member-count">0</strong>
+              <small>Registered members</small>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Total Tasks</span>
+              <strong id="task-count">0</strong>
+              <small>Assigned cooperative work</small>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Outstanding Tasks</span>
+              <strong id="pending-count">0</strong>
+              <small>Not yet completed</small>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Contributions</span>
+              <strong id="record-count">0</strong>
+              <small>Contribution records</small>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Support Records</span>
+              <strong id="support-count">0</strong>
+              <small>Assistance recorded</small>
+            </article>
+          </div>
+
+          <div class="content-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Getting started</h2>
+                <p>Use the sections to manage cooperative activities.</p>
+              </div>
+            </div>
+            <div class="quick-links">
+              <a href="#members" class="quick-link">Register a member</a>
+              <a href="#tasks" class="quick-link">Assign a task</a>
+              <a href="#contributions" class="quick-link"
+                >Record a contribution</a
+              >
+              <a href="#support" class="quick-link">Record member support</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- MEMBERS -->
+        <section id="members" class="page-section">
+          <div class="content-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Member Management</h2>
+                <p>Maintain the details of cooperative members.</p>
+              </div>
+            </div>
+
+            <form id="member-form" class="form-grid">
+              <div class="form-group">
+                <label for="member-name">Full name</label>
+                <input
+                  id="member-name"
+                  name="name"
+                  type="text"
+                  placeholder="Enter full name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="member-email">Email address</label>
+                <input
+                  id="member-email"
+                  name="email"
+                  type="email"
+                  placeholder="member@example.com"
+                  required
+                />
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="primary-button">
+                  Register Member
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="content-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Registered Members</h2>
+                <p>Members available for task assignment and record keeping.</p>
+              </div>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Full name</th>
+                    <th>Email address</th>
+                  </tr>
+                </thead>
+                <tbody id="member-list">
+                  <tr>
+                    <td colspan="2" class="empty">No members added yet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TASKS -->
+        <section id="tasks" class="page-section">
+          <div class="content-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Tasks & Work Days</h2>
+                <p>
+                  Assign cooperative activities, deadlines and expected work
+                  days.
+                </p>
+              </div>
+            </div>
+
+            <form id="task-form" class="form-grid">
+              <div class="form-group">
+                <label for="task-title">Task title</label>
+                <input
+                  id="task-title"
+                  name="title"
+                  type="text"
+                  placeholder="e.g. Prepare the maize field"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="task-assignee">Assign to member</label>
+                <select id="task-assignee" name="memberId" required>
+                  <option value="">Register a member first</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="task-deadline">Deadline</label>
+                <input id="task-deadline" name="deadline" type="date" />
+              </div>
+              <div class="form-group">
+                <label for="task-work-days">Work days</label>
+                <input
+                  id="task-work-days"
+                  name="workDays"
+                  type="number"
+                  min="0"
+                  step="1"
+                  value="1"
+                />
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="primary-button">
+                  Create Task
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="content-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Task Register</h2>
+                <p>Monitor assignments and work progress.</p>
+              </div>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Task</th>
+                    <th>Assigned member</th>
+                    <th>Deadline</th>
+                    <th>Work days</th>
+                    <th>Progress</th>
+                  </tr>
+                </thead>
+                <tbody id="task-list">
+                  <tr>
+                    <td colspan="5" class="empty">No tasks created yet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTRIBUTIONS -->
+        <section id="contributions" class="page-section">
+          <div class="content-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Contribution Records</h2>
+                <p>Document what members contribute to the cooperative.</p>
+              </div>
+            </div>
+
+            <form id="record-form" class="form-grid">
+              <div class="form-group">
+                <label for="record-member">Contributing member</label>
+                <select id="record-member" name="memberId" required>
+                  <option value="">Register a member first</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="record-type">Contribution type</label>
+                <select id="record-type" name="type" required>
+                  <option value="Financial">Financial</option>
+                  <option value="Labour">Labour / Work</option>
+                  <option value="Goods">Goods or materials</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="record-description">Description</label>
+                <input
+                  id="record-description"
+                  name="description"
+                  type="text"
+                  placeholder="Describe the contribution"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="record-amount">Amount or quantity (optional)</label>
+                <input
+                  id="record-amount"
+                  name="amount"
+                  type="text"
+                  placeholder="e.g. 150 ZMW or 2 work days"
+                />
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="primary-button">
+                  Save Contribution
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="content-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Contribution Register</h2>
+                <p>Contributions made by cooperative members.</p>
+              </div>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Member</th>
+                    <th>Description</th>
+                    <th>Amount / Quantity</th>
+                  </tr>
+                </thead>
+                <tbody id="record-list">
+                  <tr>
+                    <td colspan="4" class="empty">
+                      No contributions recorded yet.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- SUPPORT -->
+        <section id="support" class="page-section">
+          <div class="content-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Member Support</h2>
+                <p>Record assistance provided to members by the cooperative.</p>
+              </div>
+            </div>
+
+            <form id="support-form" class="form-grid">
+              <div class="form-group">
+                <label for="support-member">Recipient member</label>
+                <select id="support-member" name="memberId" required>
+                  <option value="">Register a member first</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="support-type">Support type</label>
+                <select id="support-type" name="type" required>
+                  <option value="Money">Money</option>
+                  <option value="Goods">Goods</option>
+                  <option value="Materials">Materials</option>
+                  <option value="Services">Services</option>
+                  <option value="Other">Other assistance</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="support-description">Description</label>
+                <input
+                  id="support-description"
+                  name="description"
+                  type="text"
+                  placeholder="Describe the support provided"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="support-amount"
+                  >Amount or quantity (optional)</label
+                >
+                <input
+                  id="support-amount"
+                  name="amount"
+                  type="text"
+                  placeholder="e.g. 300 ZMW or 5 bags of fertilizer"
+                />
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="primary-button">
+                  Save Support Record
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="content-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Support Register</h2>
+                <p>Assistance provided to individual members.</p>
+              </div>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Member</th>
+                    <th>Support type</th>
+                    <th>Description</th>
+                    <th>Amount / Quantity</th>
+                  </tr>
+                </thead>
+                <tbody id="support-list">
+                  <tr>
+                    <td colspan="4" class="empty">
+                      No support records added yet.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- INVITATION KEYS -->
+        <section id="invitations" class="page-section">
+          <div class="content-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Invitation Keys</h2>
+                <p>
+                  Manage registration keys issued to eligible cooperative
+                  members.
+                </p>
+              </div>
+            </div>
+
+            <form id="invitation-form" class="form-grid">
+              <div class="form-group">
+                <label for="invitation-note">Recipient or purpose</label>
+                <input
+                  id="invitation-note"
+                  name="note"
+                  type="text"
+                  placeholder="e.g. New cooperative member"
+                />
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="primary-button">
+                  Generate Invitation Key
+                </button>
+              </div>
+            </form>
+
+            <p class="notice">
+              Invitation keys must be generated and validated by the Java
+              backend. This interface will be connected to that service during
+              backend implementation.
+            </p>
+
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Invitation key</th>
+                    <th>Purpose</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="invitation-list">
+                  <tr>
+                    <td colspan="3" class="empty">
+                      No invitation keys available yet.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <footer class="page-footer">
+          CoopTrack · Cooperative Task & Contribution Management System
+        </footer>
+      </main>
+    </div>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>
