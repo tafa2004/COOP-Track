@@ -1,0 +1,19 @@
+# Maven build output
+target/
+
+# Local database files
+data/
+*.db
+*.db-shm
+*.db-wal
+
+# Java crash logs
+hs_err_pid*.log
+
+# IDE settings
+.idea/
+.vscode/
+
+# Operating system files
+.DS_Store
+Thumbs.db
